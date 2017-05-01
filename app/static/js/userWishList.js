@@ -18,7 +18,6 @@ angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','sate
   function ($scope, $state,$http,$location, AuthService,toaster,$uibModal,$auth,$timeout) {
       
     $scope.load= function(){
-              console.log($location.host());
              $scope.isCollapsed = true;
               $scope.rate=0;
               $scope.max = 5;
@@ -29,13 +28,7 @@ angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','sate
                   .success(function(data){
                       if(data.success){
                           $scope.username=data.username;
-                          /*AuthService.setUname(data.username);
-                          $scope.aun=AuthService.getUname();
-                          $scope.aun=data.username;
-                          //unn=data.username;*/
-
-                     
-                          console.log();
+                          
                           sessionStorage.setItem("em",data.email);
                            toaster.pop({
                                 type:'wait',
@@ -128,12 +121,9 @@ angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','sate
          $scope.objectValue.tit='';
          $scope.objectValue.desc='';
          $scope.objectValue.opt=opt;
-         console.log('Enter empty else');
 
          }
-            console.log(imgUrl);
-            console.log(tit);   
-             console.log($scope.objectValue.name); 
+            
         };
   
 
@@ -195,20 +185,15 @@ angular.module('WishList.userWishList')
         .controller('ModalInstanceCtrl',['$scope', '$location','AuthService','$uibModalInstance','$http','toaster',
     function($scope, $location, AuthService, $uibModalInstance,$http,toaster){
         var myobj=sessionStorage.getItem('em');
-        //var uname=AuthService.getUname();
-        //console.log(uname);
         
-        /*var un=JSON.parse(myobj);
-      
-        var ID=un["userID"];*/
          $scope.showthumb=true;
        
             $scope.token=localStorage.getItem("satellizer_token");
             $scope.passwordModal='';
           
-           //$scope.messageModal=AuthService.getSecShare().tit+"\n"+AuthService.getSecShare().desc+"\n"+AuthService.getSecShare().img;//"http://0.0.0.0:8080/#/api/user/mywishlist";
+          
            $scope.flname=AuthService.getSecShare().name
-           console.log($scope.flname);
+
            
            if(AuthService.getSecShare().tit==''|| AuthService.getSecShare().desc=='' || AuthService.getSecShare().img=='' || AuthService.getSecShare().opt==0){
             
@@ -216,7 +201,7 @@ angular.module('WishList.userWishList')
             console.log(AuthService.getSecShare().desc);*/
             var t=$scope.token
             var v=t.split('"');
-            console.log(v[1]);
+            
             $scope.messageModal=$location.host()+'/#/api/user/'+v[1]+'/sharedwishlist';
 
            }
