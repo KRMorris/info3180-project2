@@ -26,7 +26,7 @@ class Users(db.Model):
     uname = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(124))
-    wishlist = db.relationship('WishList', backref=db.backref('user'))#'uname', lazy='dynamic')
+    wishlist = db.relationship('WishList', backref=db.backref('users'))#'uname', lazy='dynamic')
     
     def __init(self,uid,uname,email,password_hash):
         self.uid=uid
@@ -80,7 +80,7 @@ class WishList(db.Model):
     description = db.Column(db.String(225), index=True)
     url = db.Column(db.String(225), index=True)
     thumbnail = db.Column(db.String(225), index= True)
-    uid = db.Column(db.Integer, db.ForeignKey('user.uid'))
+    uid = db.Column(db.Integer, db.ForeignKey('users.uid'))
     priority= db.Column(db.Integer, index=True)
 
     def __init__(self,title,description,url,thumbnail,uid,priority):
