@@ -94,7 +94,11 @@ class AddUser(flask.views.MethodView):
         username = args['username']
         inemail=args['email']
         password=args['password']
+        
+        if username=='' or inemail=='' or password=='':
+            return (jsonify({'success':False,'error':'Error processing request, empty field'}))
         qry = Users.query.filter_by(email=inemail).first()
+        
         if qry is None:
             while True:
                     uid = random.randint(620000000,729999999)

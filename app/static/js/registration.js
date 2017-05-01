@@ -14,11 +14,18 @@ angular.module('WishList.registration', ['ui.router', 'toaster','ngAnimate','sat
 .controller('SignUpCtrl', [
             '$scope','$state', '$auth','$http','AuthService','toaster',
             function($scope,$state,$auth,$http,AuthService ,toaster,$window,$q) {
+
                  
-                 
-                 $scope.addUser = function(){
-                     if(!$scope.username){
-                          alert("Name required");}
+              $scope.addUser = function(){
+               /*if(!$scope.username){
+                          alert("Name required");}*/
+               if ($scope.password != $scope.cpassword){
+                    $scope.dmatch="Confirmation passwords doesn't match password";
+                    $scope.errorr=false; 
+                    
+                  }
+                else{
+
                      
                      $http.post('/api/user/register',{username: $scope.username, email: $scope.email, password: $scope.password
 
@@ -50,6 +57,7 @@ angular.module('WishList.registration', ['ui.router', 'toaster','ngAnimate','sat
           
           });
                           })
+                                }
 };
 }])
 .run(function ($rootScope, $state, $auth) {
