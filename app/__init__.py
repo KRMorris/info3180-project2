@@ -11,7 +11,7 @@ from views import AddUser#, imgList
 from image_getter import ImageGetter
 from getTitle import TitleGet
 
-import psycopg2
+'''import psycopg2
 import urlparse
 
 urlparse.uses_netloc.append("postgres")
@@ -23,12 +23,12 @@ conn = psycopg2.connect(
     password=url.password,
     host=url.hostname,
     port=url.port
-)
+)'''
 #dev
 #app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://info3180proj1:info3180@localhost:5433/info3180"
 
 #prod
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 
 app.add_url_rule('/api/user/register', view_func=AddUser.as_view('addUser'),
     methods=['POST'])
