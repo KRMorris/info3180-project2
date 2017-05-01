@@ -20,7 +20,7 @@ auth = HTTPBasicAuth()
 app.config['SECRET_KEY'] = 'secret'
 #app.config['TOKEN_SECRET']= 'asercret key is akeyof unknownsercret that isa secret'
 
-class User(db.Model):
+class Users(db.Model):
     #__tablename__ = 'users'
     uid = db.Column(db.Integer,autoincrement=True, primary_key=True)
     uname = db.Column(db.String(64), index=True, unique=True)

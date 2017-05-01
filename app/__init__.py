@@ -10,7 +10,11 @@ from views import AddUser#, imgList
 from image_getter import ImageGetter
 from getTitle import TitleGet
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://info3180proj1:info3180@localhost:5433/info3180"
+#dev
+#app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://info3180proj1:info3180@localhost:5433/info3180"
+
+#prod
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 
 app.add_url_rule('/api/user/register', view_func=AddUser.as_view('addUser'),
     methods=['POST'])

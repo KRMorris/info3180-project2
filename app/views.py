@@ -3,7 +3,7 @@ import os
 from flask import Flask,request,jsonify, render_template ,_request_ctx_stack, send_file,redirect,g,url_for,session
 import models
 import requests
-from models import User, WishList
+from models import Users, WishList
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.httpauth import HTTPBasicAuth
 from passlib.apps import custom_app_context as pwd_context
@@ -94,14 +94,14 @@ class AddUser(flask.views.MethodView):
         username = args['username']
         inemail=args['email']
         password=args['password']
-        qry = User.query.filter_by(email=inemail).first()
+        qry = Users.query.filter_by(email=inemail).first()
         if qry is None:
             while True:
                     uid = random.randint(620000000,729999999)
-                    if not db.session.query(exists().where(User.uid == uid)).scalar():
+                    if not db.session.query(exists().where(Users.uid == uid)).scalar():
                             break
       
-        user=models.User(uid=uid,uname=username,email=inemail)#,password_hash=password
+        user=models.Users(uid=uid,uname=username,email=inemail)#,password_hash=password
         user.hash_password(password)
         db.session.add(user)
         db.session.commit()
@@ -112,7 +112,7 @@ class AddUser(flask.views.MethodView):
     
 @auth.verify_password
 def verify_password(username, password):
-    user = User.query.filter_by(email = username).first()
+    user = Users.query.filter_by(email = username).first()
     if not user or not user.verify_password(password):
         return False
     g.user = user
@@ -136,7 +136,7 @@ def verify_auth_token(token):
             return jsonify({'badt':401})    # None    # invalid token
         idn=data['id']
         print 'ID:{}'.format(data)
-        user = User.query.filter_by(id=idn).first()
+        user = Users.query.filter_by(id=idn).first()
         print user.uname
         return user.uname
 
@@ -154,7 +154,7 @@ def login():
     password=args.get("password")
     
     #print password,email
-    user= User.query.filter_by(email=email).first()
+    user= Users.query.filter_by(email=email).first()
     #email=args['email']
     if not user:
         return jsonify({'success':False,'error':"User does not exist"}),404
@@ -226,7 +226,7 @@ def username():
 
 @app.route('/user/<int:id>')
 def getUser(id):#nn
-    user = User.query.get(id)
+    user = Users.query.get(id)
     if not user:
         abort(400)
     return jsonify({'username': user.uname})
@@ -259,7 +259,7 @@ def saveWL(token):
     #print 'ID:{} title:{} desc:{} url:{} thumb{}'.format(id,title, descrp,url,thumbUrl)
     priority=3
 
-    user= User.query.filter_by(uid=uid).first()#user = User.query.get(id)
+    user= Users.query.filter_by(uid=uid).first()#user = User.query.get(id)
     if not user:
         abort(400)
     if descrp != None and thumbUrl != None and title != None:
@@ -280,7 +280,7 @@ def retrieveWishL(token):
     id=payload['sub']
     
     wish=[]
-    user= User.query.filter_by(uid=id).first()
+    user= Users.query.filter_by(uid=id).first()
     if not user:
         return jsonify({'success':False})
     wl= models.WishList.query.filter_by(uid=id).all()
@@ -311,7 +311,7 @@ def removeItem(token):
 
     args= json.loads(request.data)
     delete= args["urldel"]
-    user= User.query.filter_by(uid=id).first()#user = User.query.get(id)
+    user= Users.query.filter_by(uid=id).first()#user = User.query.get(id)
     if not user:
         abort(400)   
     wishlist = db.session.query(WishList).filter_by(thumbnail=delete).first()
@@ -334,7 +334,7 @@ def getShareWishL(token):
     id=payload['sub']
     
     wish=[]
-    user= User.query.filter_by(uid=id).first()
+    user= Users.query.filter_by(uid=id).first()
     if not user:
         return jsonify({'success':False})
     wl= models.WishList.query.filter_by(uid=id).all()
