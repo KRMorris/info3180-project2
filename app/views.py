@@ -101,14 +101,13 @@ class AddUser(flask.views.MethodView):
                     if not db.session.query(exists().where(Users.uid == uid)).scalar():
                             break
       
-        user=models.Users(uid=uid,uname=username,email=inemail)#,password_hash=password
-        user.hash_password(password)
-        db.session.add(user)
-        db.session.commit()
-        
-        
-
-        return (jsonify({'success':True}))
+            user=models.Users(uid=uid,uname=username,email=inemail)#,password_hash=password
+            user.hash_password(password)
+            db.session.add(user)
+            db.session.commit()
+            return (jsonify({'success':True}))
+        else:
+            return(jsonify({'success':False,'error':'{} already exist in database'.format(inemail)}))
     
 @auth.verify_password
 def verify_password(username, password):

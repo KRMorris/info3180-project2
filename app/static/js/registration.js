@@ -6,7 +6,8 @@ angular.module('WishList.registration', ['ui.router', 'toaster','ngAnimate','sat
   $stateProvider.state('registration',{
       url:'/api/user/registration', 
     templateUrl: '../static/registration.html',
-    controller: 'SignUpCtrl'
+    controller: 'SignUpCtrl',
+    data: {restrictedLogin: false}
    
   });
 }])
@@ -27,6 +28,17 @@ angular.module('WishList.registration', ['ui.router', 'toaster','ngAnimate','sat
                               if(data.success){
                                  $state.go('login'); 
                              }
+                             else{
+                          //alert('errR');
+                          toaster.pop({
+                                  type:'error',
+                                  title:'Login Error',
+                                  body:data.error,
+                                  timeout: 0,
+                                  showCloseButton: true
+                            });
+
+                      }
                      })
                                   .error(function(error){
                                       toaster.pop({
@@ -37,6 +49,15 @@ angular.module('WishList.registration', ['ui.router', 'toaster','ngAnimate','sat
                                   showCloseButton: true
           
           });
-                          });
+                          })
 };
-}]);
+}])
+.run(function ($rootScope, $state, $auth) {
+  $rootScope.$on('$stateChangeStart',
+    function (event, toState) {
+      var requiredLogin = false;
+     
+      
+    });
+});
+
