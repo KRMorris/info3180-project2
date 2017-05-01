@@ -11,3 +11,5 @@ venv/
 *.db
 *.log
 *.zip
+/proj2
+/project2
