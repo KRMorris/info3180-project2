@@ -1,0 +1,64 @@
+.paddinglr10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.padB{
+padding-bottom:25px;
+}
+
+.share-service-icon-googleplus {
+    background: no-repeat url(www-sharing-2x-vflkbdhCh.webp) 0 -698px;
+    background-size: 32px 1349px;
+    width: 32px;
+    height: 32px;
+}
+.share-service-icon {
+    vertical-align: middle;
+    margin: -1px;
+}
+.yt-sprite {
+    display: inline-block;
+}
+
+.share-service-icon-twitter {
+    background: no-repeat url(//s.ytimg.com/yts/imgbin/www-sharing-2x-vflkbdhCh.webp) 0 -426px;
+    background-size: 32px 1349px;
+    width: 32px;
+    height: 32px;
+}
+.share-service-icon {
+    vertical-align: middle;
+    margin: -1px;
+}
+.yt-sprite {
+    display: inline-block;
+}
+
+.btL{
+float:right;
+padding-right:15px;
+}
+
+.btR{
+padding-left:15px;
+}
+
+.thumbimg img{
+width: 100%;
+height: auto;
+} 
+
+.ctxt{
+font-size: 110%;
+}
+
+.delimg img{
+width:25px;
+height:25px;
+}
+
+.sIcon img{
+width:100px;
+height:100px;
+}

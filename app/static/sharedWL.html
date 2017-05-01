@@ -1,0 +1,54 @@
+
+
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true,'animation-class': 'toast-top-center'}"></toaster-container>
+<div ng-controller="sharedWLCtrl" ng-init="load()">
+
+<a class="btn btn-default pull-left plb" href="" ng-click="logout()">Logout</a><a class="btn btn-default pull-right plb"ui-sref="search" "#/api/user/wishlist/search" >Search</a><br><br>
+<div class="row">
+
+<h3 class="text-center">WishList</h3><br>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<br>
+
+<hr>
+<br>
+<div  ng-repeat="items in wishes">
+<div class="col-lg-3 col-md-4 col-xs-6 ">
+<div ng-hide="showthumb">
+<div class="table-bordered ">
+
+<a class="thumbnail thumbimg" href="{{items.url}}">
+<img  class="img-responsive" ng-src="{{items.thumb}}" ng-class="{'selected':$index == selectedIndex}" ng-click="toggle();setUrl(items.thumb);imgClicked($index)" >
+</a>
+
+<div class="caption">
+<div>
+<b class="ctxt">Title:</b>{{items.title}}<br>
+<b>Description:</b>{{items.descrp}}<br>
+
+</div>
+</div>
+</div>
+
+       </div>
+     </div>
+
+
+	</div>
+	
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+ </div>
+
+</div>

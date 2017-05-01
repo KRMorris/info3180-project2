@@ -1,0 +1,13 @@
+*~
+*.pyc
+*.swo
+*.swp
+db.db
+venv/
+*.html~
+*.py~
+*.js~
+*.css~
+*.db
+*.log
+*.zip

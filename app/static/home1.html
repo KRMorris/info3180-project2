@@ -1,0 +1,55 @@
+<div>
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true,'animation-class': 'toast-top-center'}"></toaster-container>
+</div>
+<a class="btn btn-default pull-left plb"href="" ng-click="logout()">Logout</a>
+<a class="btn btn-default pull-right plb"ui-sref="mywishlist">View WishList</a>
+<br><!--"#/api/user/mywishlist"-->
+<br>
+</br>
+<div ng-controller="home1Controller">
+<div></div>
+
+<form ng-submit="getImg();tTitle()">
+
+   <fieldset>
+      <input type="url" placeholder="Enter URL here" size=50 ng-model="s_url" required="" />
+      <button class="btn btn-primary">Search</button>
+    </fieldset>
+ 
+</form>
+
+<p ng-show="showBt">Notice:Description input and title will appear here after you have selected a thumbnail</p></br>
+<div ng-hide="showBt">
+
+<form ng-submit="saveWishL()" role="form">
+<div class="form-group">
+   <label for="title">Title:</label><br>
+   <input type="text" placeholder="" size=70 ng-model="t_title" required="" class="" >
+   </div>
+
+<div class="form-group">
+   <label for="descrip">Description:</label><br>
+   <input type="text" placeholder="Enter Description" size=70 ng-model="Wldecr" required="" class="">
+   </div>
+      <a class="btn btn-primary" role="presentation" ng-click="saveWishL()" href="">add to wishlist</a>
+</form>
+</div>
+<br>
+<pre>
+Select thumbnail:
+<div  ng-repeat="img in getimg">
+<div class="box">
+    <div class="boxInner">
+<a href="">
+<img ng-src="{{img.img}}"class="img-thumbnail" ng-class="{'selected':$index == selectedIndex}" ng-click="toggle();setUrl(img.img);imgClicked($index)" >
+</a> 
+</div>
+</div>
+</div>
+ 
+</div>
+</pre>
+
+</div>
+
+
