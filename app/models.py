@@ -78,8 +78,8 @@ class WishList(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title=db.Column(db.String(225), index=True)
     description = db.Column(db.String(225), index=True)
-    url = db.Column(db.String(225), index=True)
-    thumbnail = db.Column(db.String(225), index= True)
+    url = db.Column(db.String(700), index=True)
+    thumbnail = db.Column(db.String(700), index= True)
     uid = db.Column(db.Integer, db.ForeignKey('users.uid'))
     priority= db.Column(db.Integer, index=True)
 
