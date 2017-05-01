@@ -49,7 +49,7 @@ angular.module('WishList.home1', ['ui.router','toaster','ngAnimate','satellizer'
                                 type:'error',
                                 title:'Error',
                                 body:'Error retrieving thumbnails.',
-                                timeout: 0,
+                                timeout: 10000,
                                 showCloseButton: true
                             });
                         }
@@ -62,7 +62,7 @@ angular.module('WishList.home1', ['ui.router','toaster','ngAnimate','satellizer'
                                 type:'error',
                                 title:'Server Error',
                                 body:'Error retrieving thumbnails.',
-                                timeout: 0,
+                                timeout: 10000,
                                 showCloseButton: true
                             });
                         
@@ -92,7 +92,7 @@ angular.module('WishList.home1', ['ui.router','toaster','ngAnimate','satellizer'
                                 type:'error',
                                 title:'Thumbnail title error',
                                 body:'Error retrieving title. Try again or manually enter title.',
-                                timeout: 0,
+                                timeout: 10000,
                                 showCloseButton: true
                             });
                         });
@@ -126,7 +126,7 @@ angular.module('WishList.home1', ['ui.router','toaster','ngAnimate','satellizer'
                                 type:'success',
                                 title:'Success',
                                 body:'Wish successfully added to WishList',
-                                timeout: 0,
+                                timeout: 10000,
                                 showCloseButton: true
                             });
                            
@@ -138,7 +138,7 @@ angular.module('WishList.home1', ['ui.router','toaster','ngAnimate','satellizer'
                                 type:'warning',
                                 title:'WishList',
                                 body:'Unable to save wish to WishList, please try again.',
-                                timeout: 0,
+                                timeout: 10000,
                                 showCloseButton: true
                             });
                 }
@@ -150,7 +150,7 @@ angular.module('WishList.home1', ['ui.router','toaster','ngAnimate','satellizer'
                                 type:'error',
                                 title:'WishList',
                                 body:'Unable to save wish to WishList, please try again.',
-                                timeout: 0,
+                                timeout: 10000,
                                 showCloseButton: true
                             });
                 })

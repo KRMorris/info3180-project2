@@ -147,7 +147,7 @@ angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','sate
                                 type:'error',
                                 title:'Error',
                                 body:'Error deleting item.',
-                                timeout: 0,
+                                timeout: 10000,
                                 showCloseButton: true
                             });
         //$log.log(error);
@@ -233,7 +233,7 @@ angular.module('WishList.userWishList')
                                 type:'error',
                                 title:'Error',
                                 body:'Error sending message.',
-                                timeout: 0,
+                                timeout: 10000,
                                 showCloseButton: true
                             });
                         }
@@ -246,7 +246,7 @@ angular.module('WishList.userWishList')
                                 type:'error',
                                 title:'Server Error',
                                 body:'Error sending message.',
-                                timeout: 0,
+                                timeout: 10000,
                                 showCloseButton: true
                             });
                         
