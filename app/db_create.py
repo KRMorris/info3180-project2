@@ -3,7 +3,7 @@
 '''from config import SQLALCHEMY_DATABASE_URI
 from config import SQLALCHEMY_MIGRATE_REPO'''
 from app import db
-from app.models import User, WishList
+from app.models import Users, WishList
 #import os.path
 db.create_all()
 '''if not os.path.exists(SQLALCHEMY_MIGRATE_REPO):
