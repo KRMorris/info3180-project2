@@ -104,7 +104,7 @@ angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','sate
   $scope.setShUrl= function(tit,des,imgUrl,opt) {
          $scope.selShImg = imgUrl;
          $scope.tit=tit;
-         $scope.des=des;
+         $scope.des=des; 
          AuthService.secShare($scope.tit,$scope.des,$scope.selShImg);
          $scope.objectValue=AuthService.getSecShare();
          $scope.objectValue.name=$scope.username;
@@ -156,12 +156,14 @@ angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','sate
 };
   
   $scope.shareModal = function(){
+
+    
       var modalInstance1 = $uibModal.open({
             animation: true,
             templateUrl:'../static/modal1.html',
             controller:'ModalInstanceCtrl1'
         });
-     // var sDeets=thumb;
+        
      // $scope.subjectModal=sDeets;
   }
 
@@ -270,7 +272,10 @@ angular.module('WishList.userWishList')
         }]);
         
  angular.module('WishList.userWishList')
-        .controller('ModalInstanceCtrl1',function($scope, $uibModalInstance,$uibModal){
+        .controller('ModalInstanceCtrl1',function($scope, $uibModalInstance,$uibModal,AuthService){
+          $scope.singShare=AuthService.getSecShare().img;
+          $scope.title=AuthService.getSecShare().tit;
+          $scope.descr=AuthService.getSecShare().desc;
         
                     $scope.send = function(){
                         
