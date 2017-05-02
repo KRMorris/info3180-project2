@@ -276,6 +276,7 @@ angular.module('WishList.userWishList')
           $scope.singShare=AuthService.getSecShare().img;
           $scope.title=AuthService.getSecShare().tit;
           $scope.descr=AuthService.getSecShare().desc;
+          console.log($scope.singShare)
         
                     $scope.send = function(){
                         
