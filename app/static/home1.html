@@ -1,11 +1,12 @@
 
 <toaster-container toaster-options="{'time-out': 3000, 'close-button':true,'animation-class': 'toast-top-center'}"></toaster-container>
+<div ng-controller="home1Controller">
 <a class="btn btn-default pull-left plb"href="" ng-click="logout()">Logout</a>
 <a class="btn btn-default pull-right plb"ui-sref="mywishlist">View WishList</a>
 <br><!--"#/api/user/mywishlist"-->
 <br>
 </br>
-<div ng-controller="home1Controller">
+
 <div></div>
 
 <form ng-submit="getImg();tTitle()">
