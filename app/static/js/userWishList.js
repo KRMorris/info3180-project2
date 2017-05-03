@@ -26,7 +26,7 @@ angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','sate
           $http.get('api/user/'+$scope.token+'/wishlist')
           //$http.get('api/userinfo')
                   .success(function(data){
-                      if(data.success){
+                      if(data.success && data.wishes !=''){
                           $scope.username=data.username;
                           
                           sessionStorage.setItem("em",data.email);
@@ -40,6 +40,7 @@ angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','sate
                           $scope.wishes=data.wishes;
                           
                       }
+                      else if (data.success && data.wishes=='') { }
                       else{
                           //alert('errR');
                           toaster.pop({
