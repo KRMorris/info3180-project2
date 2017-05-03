@@ -4,6 +4,7 @@ angular.module('WishList', ['ui.router', 'toaster','ngAnimate',
      
      'satellizer', 
      '720kb.socialshare',
+     'angular.vertilize',
      //'ngStorage',
      'WishList.home',
      'WishList.login',

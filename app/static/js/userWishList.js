@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','satellizer','ui.bootstrap','720kb.socialshare' ])
+angular.module('WishList.userWishList', ['ui.router','toaster','ngAnimate','satellizer','ui.bootstrap','720kb.socialshare','angular.vertilize' ])
 
 .config(['$stateProvider', function($stateProvider) {
         

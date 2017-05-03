@@ -7,7 +7,7 @@
 <div class="row">
 <pre>Welcome {{username}}.</pre>
 <h3 class="text-center">My WishList</h3><br>
-<div class="inline"><a href="" class="sIcon pull-right "><img class="img-responsive" ng-src="../static/img/test.png" ng-click="share();setShUrl('',' ',' ',0)"></a></div>
+<div class="img-hover"><a href="" class="sIcon pull-right "><img class="img-responsive" ng-src="../static/img/test.png" ng-click="share();setShUrl('',' ',' ',0)"></a></div>
 <br>
 <br>
 <br>
@@ -18,25 +18,34 @@
 
 <hr>
 <br>
-<div  ng-repeat="items in wishes">
+<div vertilize-container class="row">
+<div  ng-repeat="items in wishes" >
 <div class="col-lg-3 col-md-4 col-xs-6 ">
 <div ng-hide="showthumb">
-<div class="table-bordered ">
-<a class="delimg" href=""><img ng-src="../static/img/images.png" ng-click="showthumb =! showthumb;remove(items.thumb)"></a>
-<a class="thumbnail thumbimg" href="{{items.url}}">
+
+<div class="well">
+
+<div vertilize>
+<div class=" table-bordered">
+<a class="delimg img-hover" href=""><img ng-src="../static/img/images.png" ng-click="showthumb =! showthumb;remove(items.thumb)"></a>
+</div>
+<div class="thumbnail">
+<a class="" href="{{items.url}}">
 <img  class="img-responsive" ng-src="{{items.thumb}}" ng-class="{'selected':$index == selectedIndex}" ng-click="toggle();setUrl(items.thumb);imgClicked($index)" >
 </a>
+</div>
 
 <div class="caption">
 <div>
-<b class="ctxt">Title:</b>{{items.title}}<br>
-<b>Description:</b>{{items.descrp}}<br>
+<b class="ctxt">Title:</b>{{items.title}}<br><br>
+<b>Description:</b>{{items.descrp}}<br><br>
 <uib-rating ng-model="rate" on-hover="hoveringOver(value)" on-leave="overStar = null"  aria-labelledby="default-rating" ng-class="{'selected':$index == selectedIndex}"></uib-rating>
 <div class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%....{{lv}}</div> 
-<div class="inline">
+<div class="img-hover">
 <a href=""><img class="img-responsive" ng-src="../static/img/shareicon.png" ng-click="isCollapsed = !isCollapsed;shareModal();setShUrl(items.title,items.descrp,items.url,1)"></a>
 <!--a class="delimg" href=""><img ng-src="../static/img/images.png"></a--></div>
 </div>
+
 </div>
 <!--div uib-collapse="isCollapsed">
 		<div class=" "><a ng-click="share()">Email</a></div>
@@ -59,12 +68,13 @@ socialshare-url="http://720kb.net">
          <span class="share-service-icon share-service-icon-googleplus yt-sprite"></span-->
        
        </div>
+       <br>
      </div>
 
 
 	</div>
 	
-
+</div>
 
 </div>
 </div>
